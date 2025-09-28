@@ -1,6 +1,6 @@
 import { Router } from "express";
 import ApiError from "@/utils/classes/ApiError";
-import users from "./users";
+import members from "./members";
 
 const router = Router();
 
@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
 });
 
 // Basic routes
-router.use("/users", users);
+router.use("/members", members);
 
 // Handle 404 errors for all other routes
 router.use("/*splat", (req, res, next) => next(new ApiError(404, `This route does not exist: ${req.originalUrl}`)));
