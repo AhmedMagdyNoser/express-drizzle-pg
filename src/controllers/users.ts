@@ -1,10 +1,19 @@
 import { Request, Response } from "express";
+import { eq } from "drizzle-orm";
+import database from "@/database";
+import users from "@/database/schema/users";
 
-export function getUsers(req: Request, res: Response) {
-  res.json({ message: "All Users Retrieved." });
+export async function getUsers(req: Request, res: Response) {
+  const results = await database.select().from(users);
+  res.json(results);
 }
 
-export function getUser(req: Request<{ id: string }>, res: Response) {
+export async function getUser(req: Request<{ id: string }>, res: Response) {
   const id = req.params.id;
-  res.json({ message: `User ${id} Retrieved` });
+  const [user] = await database
+    .select()
+    .from(users)
+    .where(eq(users.id, Number(id)));
+
+  res.json(user);
 }
