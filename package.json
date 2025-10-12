@@ -1,5 +1,5 @@
 {
-  "name": "express-drizzle-pg",
+  "name": "ts-pg-drizzle",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
