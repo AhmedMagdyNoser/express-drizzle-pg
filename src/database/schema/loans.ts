@@ -4,12 +4,15 @@ import members from "./members";
 
 export default pgTable("loans", {
   id: serial("id").primaryKey(),
-  bookId: integer("book_id").notNull().references(() => books.id),
-  memberId: integer("member_id").notNull().references(() => members.id),
-  loanDate: date("loan_date").defaultNow().notNull(),
-  returnDate: date("return_date"),
+  bookId: integer("book_id")
+    .notNull()
+    .references(() => books.id),
+  memberId: integer("member_id")
+    .notNull()
+    .references(() => members.id),
+  loanDate: date("loan_date").notNull().defaultNow(),
+  returnDate: date("return_date").notNull(),
 });
-
 
 /*
 
