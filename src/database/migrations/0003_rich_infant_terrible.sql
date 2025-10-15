@@ -1,0 +1,1 @@
+ALTER TABLE "loans" ALTER COLUMN "return_date" SET DATA TYPE timestamp with time zone;

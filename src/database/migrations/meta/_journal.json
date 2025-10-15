@@ -15,6 +15,20 @@
       "when": 1760511639263,
       "tag": "0001_wandering_miss_america",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1760558191367,
+      "tag": "0002_real_red_hulk",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1760560867348,
+      "tag": "0003_rich_infant_terrible",
+      "breakpoints": true
     }
   ]
 }

@@ -10,8 +10,8 @@ export default pgTable("loans", {
   memberId: integer("member_id")
     .notNull()
     .references(() => members.id),
-  loanDate: timestamp("loan_date").notNull().defaultNow(),
-  returnDate: timestamp("return_date"),
+  loanDate: timestamp("loan_date", { withTimezone: true }).notNull().defaultNow(),
+  returnDate: timestamp("return_date", { withTimezone: true }),
 });
 
 /*
