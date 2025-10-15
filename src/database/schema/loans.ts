@@ -1,4 +1,4 @@
-import { pgTable, serial, integer, date } from "drizzle-orm/pg-core";
+import { pgTable, serial, integer, timestamp } from "drizzle-orm/pg-core";
 import books from "./books";
 import members from "./members";
 
@@ -10,8 +10,8 @@ export default pgTable("loans", {
   memberId: integer("member_id")
     .notNull()
     .references(() => members.id),
-  loanDate: date("loan_date").notNull().defaultNow(),
-  returnDate: date("return_date").notNull(),
+  loanDate: timestamp("loan_date").notNull().defaultNow(),
+  returnDate: timestamp("return_date"),
 });
 
 /*
