@@ -7,117 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Members",
-			"item": [
-				{
-					"name": "create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Ibrahim\",\r\n    \"email\": \"ibrahim@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/members",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"members"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/members",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"members"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/members/32",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"members",
-								"32"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Ibrahim\",\r\n    \"email\": \"ibrahim@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/members/32",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"members",
-								"32"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/members/12",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"members",
-								"12"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Books",
 			"item": [
 				{
@@ -229,6 +118,117 @@
 			]
 		},
 		{
+			"name": "Members",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ibrahim\",\r\n    \"email\": \"ibrahim@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/members",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/members",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/members/32",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"members",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ibrahim\",\r\n    \"email\": \"ibrahim@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/members/32",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"members",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/members/12",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"members",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Loans",
 			"item": [
 				{
@@ -269,6 +269,43 @@
 							],
 							"path": [
 								"loans"
+							],
+							"query": [
+								{
+									"key": "bookId",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "memberId",
+									"value": "32",
+									"disabled": true
+								},
+								{
+									"key": "loanDateFrom",
+									"value": "2025-10-15T17:50:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "loanDateTo",
+									"value": "2025-10-15T17:50:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "returnDateFrom",
+									"value": "2025-10-15T15:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "returnDateTo",
+									"value": "2025-10-15T15:00:00.000Z",
+									"disabled": true
+								},
+								{
+									"key": "returned",
+									"value": "true",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -298,13 +335,13 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/loans/3/return",
+							"raw": "{{URL}}/loans/5/return",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"loans",
-								"3",
+								"5",
 								"return"
 							]
 						}

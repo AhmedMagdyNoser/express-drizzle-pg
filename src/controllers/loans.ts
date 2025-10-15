@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { and, eq, isNull } from "drizzle-orm";
+import { and, eq, gt, lt, isNull, isNotNull, SQL } from "drizzle-orm";
 import database from "@/database";
 import books from "@/database/schema/books";
 import members from "@/database/schema/members";
@@ -45,8 +45,35 @@ export async function createLoan(req: Request, res: Response, next: NextFunction
 }
 
 export async function getLoans(req: Request, res: Response, next: NextFunction) {
+  const { bookId, memberId, loanDateFrom, loanDateTo, returnDateFrom, returnDateTo, returned } = req.query;
+
+  const conditions: SQL[] = [];
+
+  // Filtering by book or member
+  if (bookId) conditions.push(eq(loans.bookId, Number(bookId)));
+  if (memberId) conditions.push(eq(loans.memberId, Number(memberId)));
+
+  // Loan date range filters
+  if (loanDateFrom) conditions.push(gt(loans.loanDate, new Date(loanDateFrom as string)));
+  if (loanDateTo) conditions.push(lt(loans.loanDate, new Date(loanDateTo as string)));
+
+  // Return date range filters
+  if (returnDateFrom) conditions.push(gt(loans.returnDate, new Date(returnDateFrom as string)));
+  if (returnDateTo) conditions.push(lt(loans.returnDate, new Date(returnDateTo as string)));
+
+  // Returned status filter
+  if (returned === "false") conditions.push(isNull(loans.returnDate));
+  else if (returned === "true") conditions.push(isNotNull(loans.returnDate));
+
   try {
-    const results = await database.select().from(loans);
+    const results =
+      conditions.length > 0
+        ? await database
+            .select()
+            .from(loans)
+            .where(and(...conditions))
+        : await database.select().from(loans);
+
     res.json({ length: results.length, data: results });
   } catch (error: unknown) {
     return next(new ApiError(500, extractErrorMessage(error)));
