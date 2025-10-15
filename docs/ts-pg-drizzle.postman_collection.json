@@ -229,6 +229,91 @@
 			]
 		},
 		{
+			"name": "Loans",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": 1,\r\n    \"memberId\": 32\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/loans",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/loans",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/loans/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loans",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "return",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/loans/3/return",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"loans",
+								"3",
+								"return"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "App",
 			"request": {
 				"method": "GET",
