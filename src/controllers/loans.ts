@@ -83,11 +83,33 @@ export async function getLoans(req: Request, res: Response, next: NextFunction) 
 export async function getLoan(req: Request<{ id: string }>, res: Response, next: NextFunction) {
   try {
     const id = Number(req.params.id);
-    const [loan] = await database.select().from(loans).where(eq(loans.id, id));
-    if (!loan) next(new ApiError(404, `Loan with id ${id} not found.`));
+    const populate = req.query.populate === "true";
+
+    const baseQuery = database.select().from(loans).where(eq(loans.id, id));
+
+    const query = populate
+      ? database
+          .select({
+            id: loans.id,
+            book: books,
+            member: members,
+            // Or, if you want to limit fields
+            // book: { id: books.id, title: books.title },
+            // member: { id: members.id, name: members.name },
+            loanDate: loans.loanDate,
+            returnDate: loans.returnDate,
+          })
+          .from(loans)
+          .leftJoin(books, eq(loans.bookId, books.id))
+          .leftJoin(members, eq(loans.memberId, members.id))
+          .where(eq(loans.id, id))
+      : baseQuery;
+
+    const [loan] = await query;
+    if (!loan) return next(new ApiError(404, `Loan with id ${id} not found.`));
     res.json(loan);
-  } catch (error: unknown) {
-    return next(new ApiError(500, extractErrorMessage(error)));
+  } catch (error) {
+    next(new ApiError(500, extractErrorMessage(error)));
   }
 }
 
